@@ -1,7 +1,6 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Dishes Ingredients</h1>
-
 <table>
   <thead>
     <tr>
@@ -14,8 +13,8 @@
   <tbody>
     <% @dishes_ingredients.each do |dishes_ingredient| %>
       <tr>
-        <td><%= dishes_ingredient.dish %></td>
-        <td><%= dishes_ingredient.ingredient %></td>
+        <td><%= dishes_ingredient.dish.dname %></td>
+        <td><%= dishes_ingredient.ingredient.iname %></td>
         <td><%= link_to 'Show', dishes_ingredient %></td>
         <td><%= link_to 'Edit', edit_dishes_ingredient_path(dishes_ingredient) %></td>
         <td><%= link_to 'Destroy', dishes_ingredient, method: :delete, data: { confirm: 'Are you sure?' } %></td>

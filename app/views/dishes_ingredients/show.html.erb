@@ -2,13 +2,9 @@
 
 <p>
   <strong>Dish:</strong>
-  <%= @dishes_ingredient.dish %>
+  <%= @dishes_ingredient.dish.dname %>
 </p>
 
-<p>
-  <strong>Ingredient:</strong>
-  <%= @dishes_ingredient.ingredient %>
-</p>
 
 <%= link_to 'Edit', edit_dishes_ingredient_path(@dishes_ingredient) %> |
 <%= link_to 'Back', dishes_ingredients_path %>

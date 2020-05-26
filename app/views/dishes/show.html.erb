@@ -1,8 +1,21 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Dname:</strong>
+  <strong>Dish:</strong>
   <%= @dish.dname %>
+</p>
+
+<p><strong> Ingredients for this dish: </strong></p>
+<p>
+  <table border= "1">
+      <tbody>
+        <% @dishes_ingredients.includes(:ingredient).each do |di|%>
+        <tr>
+        <td><%= di.ingredient.iname%></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
 </p>
 
 <%= link_to 'Edit', edit_dish_path(@dish) %> |
