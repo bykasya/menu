@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Menu Planners</h1>
+
+<table>
+  <thead>
+    <tr>
+
+
+      <th>Type</th>
+        <th>Date</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @menu_planners.each do |mp| %>
+      <tr>
+        <td></td>
+        <td><%= mp.date %></td>
+      </tr>
+      <tr>
+        <td><% if mp.dish_type==1 %>
+         <b>Breakfast</b>
+       <% elsif mp.dish_type==2 %>
+         <b>Lunch</b>
+        <% elsif mp.dish_type==3 %>
+        <b>Dinner</b>
+          <% else mp.dish_type!=3 or 2 or 1 %>
+          Select correct type
+        <% end %>
+        </td>
+        <td><%= mp.dish.dname %></td>
+        <td><%= link_to 'Show', mp %></td>
+        <td><%= link_to 'Edit', edit_menu_planner_path(mp) %></td>
+        <td><%= link_to 'Destroy', mp, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Menu Planner', new_menu_planner_path %>

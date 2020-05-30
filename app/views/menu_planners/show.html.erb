@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @menu_planner.date %>
+</p>
+
+<p>
+  <strong>Dish type:</strong>
+  <%= @menu_planner.dish_type %>
+</p>
+
+<p>
+  <strong>Dish:</strong>
+  <%= @menu_planner.dish.dname %>
+</p>
+
+<%= link_to 'Edit', edit_menu_planner_path(@menu_planner) %> |
+<%= link_to 'Back', menu_planners_path %>

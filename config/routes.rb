@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :menu_planners
   get 'home/index'
   resources :dishes_ingredients
   resources :dishes
