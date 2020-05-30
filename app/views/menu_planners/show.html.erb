@@ -12,7 +12,7 @@
 
 <p>
   <strong>Dish:</strong>
-  <%= @menu_planner.dish.dname %>
+  <%= link_to @menu_planner.dish.dname, dish_path(@menu_planner.dish) %>
 </p>
 
 <%= link_to 'Edit', edit_menu_planner_path(@menu_planner) %> |

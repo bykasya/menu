@@ -21,17 +21,16 @@
       </tr>
       <tr>
         <td><% if mp.dish_type==1 %>
-         <b>Breakfast</b>
-       <% elsif mp.dish_type==2 %>
-         <b>Lunch</b>
-        <% elsif mp.dish_type==3 %>
-        <b>Dinner</b>
-          <% else mp.dish_type!=3 or 2 or 1 %>
-          Select correct type
-        <% end %>
+          <b>Breakfast</b>
+            <% elsif mp.dish_type==2 %>
+              <b>Lunch</b>
+                <% elsif mp.dish_type==3 %>
+                  <b>Dinner</b>
+                    <% else mp.dish_type!=3 or 2 or 1 %>
+                      Uknown type of dish
+            <% end %>
         </td>
-        <td><%= mp.dish.dname %></td>
-        <td><%= link_to 'Show', mp %></td>
+        <td><%= link_to mp.dish.dname, mp %></td>
         <td><%= link_to 'Edit', edit_menu_planner_path(mp) %></td>
         <td><%= link_to 'Destroy', mp, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

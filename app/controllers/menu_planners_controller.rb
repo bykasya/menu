@@ -1,5 +1,6 @@
 class MenuPlannersController < ApplicationController
   before_action :set_menu_planner, only: [:show, :edit, :update, :destroy]
+  skip_before_action :set_menu_planner, only: [:schedule]
 
   # GET /menu_planners
   # GET /menu_planners.json
@@ -59,6 +60,9 @@ class MenuPlannersController < ApplicationController
       format.html { redirect_to menu_planners_url, notice: 'Menu planner was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+  def schedule
+    @menu_planners=MenuPlanner.all
   end
 
   private

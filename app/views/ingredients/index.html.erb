@@ -9,8 +9,7 @@
   <tbody>
     <% @ingredients.each do |ingredient| %>
       <tr>
-        <td><%= ingredient.iname %></td>
-        <td><%= link_to 'Show', ingredient %></td>
+        <td><%= link_to ingredient.iname, ingredient %></td>
         <td><%= link_to 'Edit', edit_ingredient_path(ingredient) %></td>
         <td><%= link_to 'Destroy', ingredient, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
@@ -20,4 +19,4 @@
 
 <br>
 
-<%= link_to 'New Ingredient', new_ingredient_path %>
+<button type="button" class="btn btn-primary"><%= link_to 'New Ingredient', new_ingredient_path %></button>
