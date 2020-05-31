@@ -1,8 +1,58 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Menu Planners</h1>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">Type</th>
+      <% @week_from_today.each do |day| %>
+      <th scope="col"><%= day %></th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    The week of
+    <tr>
+      <th scope="row" style="height: 100px;">Breakfast</th>
+      <td>Omlette
 
-<table>
+       </td>
+      <td>#</td>
+      <td>#</td>
+      <td>#</td>
+      <td>#</td>
+      <td>#</td>
+      <td>#</td>
+    </tr>
+    <tr>
+      <th scope="row" style="height: 100px;">Lunch</th>
+      <td>#</td>
+      <td>#</td>
+      <td>#</td>
+      <td>#</td>
+      <td>#</td>
+      <td>#</td>
+      <td>#</td>
+    </tr>
+    <tr>
+      <th scope="row" style="height: 100px;">Dinner</th>
+      <td>#</td>
+      <td>#</td>
+      <td>#</td>
+      <td>#</td>
+      <td>#</td>
+      <td>#</td>
+      <td>#</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<a class="btn btn-primary btn-lg" href="/home/schedule" role="button">Generate menu</a>
+!!!
+
+???
+
+<!-- <table>
   <thead>
     <tr>
 
@@ -13,31 +63,5 @@
     </tr>
   </thead>
 
-  <tbody>
-    <% @menu_planners.each do |mp| %>
-      <tr>
-        <td></td>
-        <td><%= mp.date %></td>
-      </tr>
-      <tr>
-        <td><% if mp.dish_type==1 %>
-          <b>Breakfast</b>
-            <% elsif mp.dish_type==2 %>
-              <b>Lunch</b>
-                <% elsif mp.dish_type==3 %>
-                  <b>Dinner</b>
-                    <% else mp.dish_type!=3 or 2 or 1 %>
-                      Uknown type of dish
-            <% end %>
-        </td>
-        <td><%= link_to mp.dish.dname, mp %></td>
-        <td><%= link_to 'Edit', edit_menu_planner_path(mp) %></td>
-        <td><%= link_to 'Destroy', mp, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
+  
 <%= link_to 'New Menu Planner', new_menu_planner_path %>

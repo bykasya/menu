@@ -1,11 +1,11 @@
 class MenuPlannersController < ApplicationController
   before_action :set_menu_planner, only: [:show, :edit, :update, :destroy]
-  skip_before_action :set_menu_planner, only: [:schedule]
 
   # GET /menu_planners
   # GET /menu_planners.json
   def index
-    @menu_planners = MenuPlanner.all
+    @today = Date.current
+    @week_from_today=[@today, @today+1, @today+2, @today+3, @today+4, @today+5, @today+6]
   end
 
   # GET /menu_planners/1
@@ -61,9 +61,7 @@ class MenuPlannersController < ApplicationController
       format.json { head :no_content }
     end
   end
-  def schedule
-    @menu_planners=MenuPlanner.all
-  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
