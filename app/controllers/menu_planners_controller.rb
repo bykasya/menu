@@ -1,5 +1,6 @@
 class MenuPlannersController < ApplicationController
   before_action :set_menu_planner, only: [:show, :edit, :update, :destroy]
+  skip_before_action :set_menu_planner, only: [:newweek]
 
   # GET /menu_planners
   # GET /menu_planners.json
@@ -60,6 +61,28 @@ class MenuPlannersController < ApplicationController
       format.html { redirect_to menu_planners_url, notice: 'Menu planner was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def newweek
+    @today = Date.current
+    @week_from_today=[@today, @today+1, @today+2, @today+3, @today+4, @today+5, @today+6]
+    @dishes=Dish.all
+    @generated_week_menu = []
+      @week_from_today.each do |day|
+        @day_menu = []
+        @generated_week_menu.push(day)
+        k=rand(@dishes.size)   #finds the position number in array of all dishes
+        @day_menu.push(k)
+        dishtype=1                    #dishtype 1-breakfast, 2-lunch, 3-dinner
+          3.times do
+            @generated_week_menu.push([@dishes[k],dishtype])
+            dishtype +=1
+            loop do
+              k=rand(@dishes.size)
+              break if !@day_menu.include?(k) # to avoid repetitions in day
+            end
+          end
+      end
   end
 
 

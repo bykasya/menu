@@ -5,6 +5,6 @@ Rails.application.routes.draw do
   resources :dishes
   resources :ingredients
   root 'home#index'
-  get 'menu_planners/schedule', to:"menu_planners#schedule" 
+  get '/menu_planners/new/newweek', to: 'menu_planners#newweek'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

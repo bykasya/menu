@@ -1,0 +1,8 @@
+<h1> New week is generated</h1>
+<% @dishes.each do |d| %>
+<%= d.dname %> <br>
+<% end %>
+<hr/>
+<%= @generated_week_menu.inspect %>
+<hr/>
+<%= link_to 'Back', menu_planners_path %>
