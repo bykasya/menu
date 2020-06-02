@@ -13,12 +13,22 @@
 
   <div class="field">
     <%= form.label :date %>
-    <%= form.date_select :date %>
+    <%= form.date_select :date, start_year: 2020 %>
   </div>
 
   <div class="field">
-    <%= form.label :dish_type %>
-    <%= form.number_field :dish_type, min: 1, max: 3 %>
+    <% #= form.label :dish_type %>
+    <% #= form.number_field :dish_type, min: 1, max: 3 %>
+      <% for i  in 1..3 do %>
+        <%= radio_button("menu_planner","dish_type", i) %>
+        <% if i==1 %>
+        Breakfast
+        <% elsif i==2 %>
+        Lunch
+        <% elsif i==3 %>
+        Dinner
+        <% end %>
+      <% end %>
   </div>
 
   <div class="field">

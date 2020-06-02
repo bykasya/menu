@@ -1,43 +1,41 @@
 <p id="notice"><%= notice %></p>
 
-
-<h1>Menu Planners</h1>
-<%= @generated_week_menu.inspect %>
-<table class="table table-bordered">
+<h1 class="text-center">Menu for this week</h1>
+<table class="table table-bordered my-5">
   <tbody>
+    <% for i  in 0..3 do %>
     <tr>
-      <th scope="row" style="height: 100px;">Breakfast</th>
-      <td>Omlette
-
-       </td>
-      <td>#</td>
-      <td>#</td>
-      <td>#</td>
-      <td>#</td>
-      <td>#</td>
-      <td>#</td>
-    </tr>
-    <tr>
-      <th scope="row" style="height: 100px;">Lunch</th>
-      <td>#</td>
-      <td>#</td>
-      <td>#</td>
-      <td>#</td>
-      <td>#</td>
-      <td>#</td>
-      <td>#</td>
-    </tr>
-    <tr>
-      <th scope="row" style="height: 100px;">Dinner</th>
-      <td>#</td>
-      <td>#</td>
-      <td>#</td>
-      <td>#</td>
-      <td>#</td>
-      <td>#</td>
-      <td>#</td>
-    </tr>
+          <% if i==0 %>
+            <th scope="row" style="height: 100px;">Dish Type / Day</th>
+          <% elsif i==1 %>
+            <th scope="row" style="height: 100px;">Breakfast</th>
+          <% elsif i==2 %>
+            <th scope="row" style="height: 100px;">Lunch</th>
+          <% elsif i==3 %>
+            <th scope="row" style="height: 100px;">Dinner</th>
+          <% end %>
+     <% @this_week.each do |twday| %>
+          <% if i==0 %>
+            <th scope="row" style="height: 100px;"><%= twday %></th>
+          <% else %>
+            <td scope="row" style="height: 100px;">
+              <% if @generated_week_menu.key?(twday) %>
+                  <% if @generated_week_menu[twday].key?(i) %>
+                     <%= link_to @generated_week_menu[twday][i].dname, @generated_week_menu[twday][i] %>
+                  <% else %>
+                    <%= link_to 'No dish assigned', new_menu_planner_path%>
+                  <% end %>
+              <% else %>
+                 <%= link_to 'No dish assigned', new_menu_planner_path%>
+              <% end %>
+            </td>
+          <% end %>
+    <% end %>
+      </tr>
+   <% end %>
   </tbody>
 </table>
 <br>
+
+
 <!-- <a class="btn btn-primary btn-lg" href="/menu_planners/new/newweek" role="button">Generate menu</a> -->

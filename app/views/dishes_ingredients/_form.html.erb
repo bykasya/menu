@@ -20,7 +20,7 @@
     <%= form.label :ingredient_id %>
     <%= form.collection_select :ingredient_id, Ingredient.all, :id, :iname, include_blank: true %>
   </div>
-  <%=params.inspect%>
+
   <div class="actions">
     <%= form.submit %>
   </div>

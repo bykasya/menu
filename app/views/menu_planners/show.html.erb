@@ -6,7 +6,13 @@
 
 <p>
   <strong>Dish type:</strong>
-  <%= @menu_planner.dish_type %>
+    <% if @menu_planner.dish_type== 1 %>
+      Breakfast
+        <% elsif @menu_planner.dish_type== 2 %>
+          Lunch
+            <% else @menu_planner.dish_type== 3 %>
+              Dinner
+      <% end %>
 </p>
 
 <p>
