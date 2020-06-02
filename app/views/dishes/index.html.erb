@@ -1,19 +1,16 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Dishes</h1>
+<h1>How many dishes you can cook!</h1>
 
 <table>
-  <thead>
-  
-  </thead>
+  <thead> </thead>
 
   <tbody>
     <% @dishes.each do |dish| %>
       <tr>
-        <td><%= dish.dname %></td>
-        <td><%= link_to 'Show', dish %></td>
+        <td><%= link_to dish.dname, dish %></td>
         <td><%= link_to 'Edit', edit_dish_path(dish) %></td>
-        <td><%= link_to 'Destroy', dish, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Remove', dish, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -21,4 +18,4 @@
 
 <br>
 
-<%= link_to 'New Dish', new_dish_path %>
+<button type="button" class="btn btn-primary"><%= link_to 'New Dish', new_dish_path %>

@@ -1,12 +1,20 @@
 class MenuPlannersController < ApplicationController
   before_action :set_menu_planner, only: [:show, :edit, :update, :destroy]
-  skip_before_action :set_menu_planner, only: [:newweek]
+
 
   # GET /menu_planners
   # GET /menu_planners.json
   def index
+    @menu_planners=MenuPlanner.all
     @today = Date.current
-    @week_from_today=[@today, @today+1, @today+2, @today+3, @today+4, @today+5, @today+6]
+    @this_week = @today.all_week  #returns a range (Mo...Sun) for the week of specific day
+    #@week_from_today=[@today, @today+1, @today+2, @today+3, @today+4, @today+5, @today+6]
+    @generated_week_menu = {}
+    @menu_planners.each do |mp|
+      if @this_week.include?(mp.date)
+        @generated_week_menu=@generated_week_menu.deep_merge({mp.date=>{mp.dish_type=>mp.dish}})
+      end
+    end
   end
 
   # GET /menu_planners/1
@@ -27,7 +35,7 @@ class MenuPlannersController < ApplicationController
   # POST /menu_planners.json
   def create
     @menu_planner = MenuPlanner.new(menu_planner_params)
-
+    puts YAML::dump(menu_planner_params)
     respond_to do |format|
       if @menu_planner.save
         format.html { redirect_to @menu_planner, notice: 'Menu planner was successfully created.' }
@@ -70,17 +78,20 @@ class MenuPlannersController < ApplicationController
     @generated_week_menu = []
       @week_from_today.each do |day|
         @day_menu = []
-        @generated_week_menu.push(day)
+      #  @generated_week_menu.push(day)
         k=rand(@dishes.size)   #finds the position number in array of all dishes
         @day_menu.push(k)
         dishtype=1                    #dishtype 1-breakfast, 2-lunch, 3-dinner
           3.times do
-            @generated_week_menu.push([@dishes[k],dishtype])
-            dishtype +=1
+          #  @generated_week_menu.push([@dishes[k],dishtype])
+          # params = {"menu_planner"=>{"date(1i)"=>"2020", "date(2i)"=>"8", "date(3i)"=>"31", "dish_type"=>"1", "dish_id"=>"1"}}
+          #  @Menu_item = MenuPlanner.new(params)
+          #  @Menu_item.save
             loop do
               k=rand(@dishes.size)
               break if !@day_menu.include?(k) # to avoid repetitions in day
             end
+            dishtype +=1
           end
       end
   end
