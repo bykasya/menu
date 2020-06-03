@@ -71,32 +71,7 @@ class MenuPlannersController < ApplicationController
     end
   end
 
-  def newweek
-    @today = Date.current
-    @week_from_today=[@today, @today+1, @today+2, @today+3, @today+4, @today+5, @today+6]
-    @dishes=Dish.all
-    @generated_week_menu = []
-      @week_from_today.each do |day|
-        @day_menu = []
-      #  @generated_week_menu.push(day)
-        k=rand(@dishes.size)   #finds the position number in array of all dishes
-        @day_menu.push(k)
-        dishtype=1                    #dishtype 1-breakfast, 2-lunch, 3-dinner
-          3.times do
-          #  @generated_week_menu.push([@dishes[k],dishtype])
-          # params = {"menu_planner"=>{"date(1i)"=>"2020", "date(2i)"=>"8", "date(3i)"=>"31", "dish_type"=>"1", "dish_id"=>"1"}}
-          #  @Menu_item = MenuPlanner.new(params)
-          #  @Menu_item.save
-            loop do
-              k=rand(@dishes.size)
-              break if !@day_menu.include?(k) # to avoid repetitions in day
-            end
-            dishtype +=1
-          end
-      end
-  end
-
-
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_menu_planner

@@ -1,5 +1,7 @@
 class IngredientsController < ApplicationController
   before_action :set_ingredient, only: [:show, :edit, :update, :destroy]
+  rescue_from ActiveRecord::RecordNotFound, :with => :my_ing_error
+
 
   # GET /ingredients
   # GET /ingredients.json
@@ -70,5 +72,9 @@ class IngredientsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def ingredient_params
       params.require(:ingredient).permit(:iname)
+    end
+
+    def my_ing_error
+        redirect_to ingredients_path, notice: "Ingredient with this ID not exist"
     end
 end
