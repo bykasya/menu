@@ -8,13 +8,15 @@ class MenuPlannersController < ApplicationController
     @menu_planners=MenuPlanner.all
     @today = Date.current
     @this_week = @today.all_week  #returns a range (Mo...Sun) for the week of specific day
-    #@week_from_today=[@today, @today+1, @today+2, @today+3, @today+4, @today+5, @today+6]
     @generated_week_menu = {}
+    @week_ingredients = []  # for list of ingredients
     @menu_planners.each do |mp|
       if @this_week.include?(mp.date)
-        @generated_week_menu=@generated_week_menu.deep_merge({mp.date=>{mp.dish_type=>mp.dish}})
+        @generated_week_menu=@generated_week_menu.deep_merge({mp.date=>{mp.dish_type=>[mp.dish,mp.id]}}) #to assign dish_type/dish to the date
+        @week_ingredients.push(DishesIngredient.find(mp.dish_id).ingredient.iname) #to extract ingredients from week dishes
       end
     end
+    @week_ingredients=@week_ingredients.uniq # to avoid repetative ingredients
   end
 
   # GET /menu_planners/1
@@ -35,7 +37,6 @@ class MenuPlannersController < ApplicationController
   # POST /menu_planners.json
   def create
     @menu_planner = MenuPlanner.new(menu_planner_params)
-    puts YAML::dump(menu_planner_params)
     respond_to do |format|
       if @menu_planner.save
         format.html { redirect_to @menu_planner, notice: 'Menu planner was successfully created.' }
@@ -71,7 +72,7 @@ class MenuPlannersController < ApplicationController
     end
   end
 
-  
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_menu_planner

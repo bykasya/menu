@@ -1,21 +1,22 @@
 <p id="notice"><%= notice %></p>
 
-<h1>How many dishes you can cook!</h1>
-
-<table>
-  <thead> </thead>
-
-  <tbody>
-    <% @dishes.each do |dish| %>
-      <tr>
-        <td><%= link_to dish.dname, dish %></td>
-        <td><%= link_to 'Edit', edit_dish_path(dish) %></td>
-        <td><%= link_to 'Remove', dish, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<h3>Look how many dishes you can cook!</h3>
+<div align="right"><a href="<%= new_dish_path %>" class="btn btn-primary" role="button">New dish</a></div><br/>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+    <th scope="col">Action</th>
+  </tr>
+</thead>
+<tbody>
+  <% @dishes.each do |dish| %>
+  <tr>
+    <td><%= link_to dish.dname, dish %></td>
+    <td><%= link_to 'Edit', edit_dish_path(dish) %></td>
     <% end %>
+  </tr>
   </tbody>
 </table>
 
-<br>
-
-<button type="button" class="btn btn-primary"><%= link_to 'New Dish', new_dish_path %>
+<div align="right"><a href="<%= new_dish_path %>" class="btn btn-primary" role="button" >New dish</a></div><br/>

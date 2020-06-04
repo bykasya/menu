@@ -1,21 +1,21 @@
 <p id="notice"><%= notice %></p>
 
-<h1>How many ingredients you use </h1>
-
-<table>
+<h3>Your ingredients: </h3>
+<div align="right"><a href="<%= new_ingredient_path %>" class="btn btn-primary" role="button">New ingredient</a></div><br>
+<table class="table table-hover">
   <thead>
-    </thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
   <tbody>
-    <% @ingredients.each do |ingredient| %>
-      <tr>
-        <td><%= link_to ingredient.iname, ingredient %></td>
-        <td><%= link_to 'Edit', edit_ingredient_path(ingredient) %></td>
-        <td><%= link_to 'Destroy', ingredient, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+      <% @ingredients.each do |ingredient| %>
+    <tr>
+      <td><%= link_to ingredient.iname, ingredient %></td>
+      <td><%= link_to 'Edit', edit_ingredient_path(ingredient) %></td>
+      <% end %>
+    </tr>
   </tbody>
 </table>
-
-<br>
-
-<button type="button" class="btn btn-primary"><%= link_to 'New Ingredient', new_ingredient_path %></button>
+<div align="right"><a href="<%= new_ingredient_path %>" class="btn btn-primary" role="button">New ingredient</a></div><br/>

@@ -10,13 +10,16 @@
   <table>
       <tbody>
         <% @dishes_ingredients.includes(:ingredient).each do |di|%>
-        <tr>
-        <td><%= di.ingredient.iname%></td>
-      </tr>
-      <% end %>
+          <tr>
+            <td><%= di.ingredient.iname%></td>
+            <td><%= link_to 'Delete', di, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+          </tr>
+        <% end %>
     </tbody>
   </table>
 </p>
-<%= link_to 'Add More Ingredients', new_dishes_ingredient_path(@dish.id)%>
-<%= link_to 'Edit', edit_dish_path(@dish) %>
-<%= link_to 'Back', dishes_path %>
+<%= link_to 'Add More Ingredients', new_dishes_ingredient_path(@dish.id)%> |
+<%= link_to 'Edit', edit_dish_path(@dish) %> |
+<%= link_to 'Back', :back %> |
+<%= link_to 'Delete dish', @dish, method: :delete, data: { confirm: 'Are you sure?' } %>
