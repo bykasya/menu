@@ -1,32 +1,35 @@
+<% if defined?notice %>
 <p id="notice"><%= notice %></p>
-
-<h1 class="text-center">Menu for this week</h1>
-<table class="table table-bordered my-5">
+<% end %>
+<h2 class="text-center">Menu for this week</h1>
+<p align="right"><a href="javascript:window.print();">Print</a></p>
+<table class="table table-bordered my-5" style="height:400px">
   <tbody>
     <% for i  in 0..3 do %>
     <tr>
           <% if i==0 %>
-            <th scope="row" style="height: 100px;">Dish Type / Day</th>
+            <th scope="row">Type / Date</th>
           <% elsif i==1 %>
-            <th scope="row" style="height: 100px;">Breakfast</th>
+            <th scope="row">Breakfast</th>
           <% elsif i==2 %>
-            <th scope="row" style="height: 100px;">Lunch</th>
+            <th scope="row">Lunch</th>
           <% elsif i==3 %>
-            <th scope="row" style="height: 100px;">Dinner</th>
+            <th scope="row">Dinner</th>
           <% end %>
      <% @this_week.each do |twday| %>
           <% if i==0 %>
-            <th scope="row" style="height: 100px;"><%= twday %></th>
+            <th scope="row" ><%= twday.strftime("%b %d %n %A") %></th>
           <% else %>
-            <td scope="row" style="height: 100px;">
+            <td scope="row" style="width:125px;">
               <% if @generated_week_menu.key?(twday) %>
                   <% if @generated_week_menu[twday].key?(i) %>
-                     <%= link_to @generated_week_menu[twday][i].dname, @generated_week_menu[twday][i] %>
+                     <%= link_to @generated_week_menu[twday][i][0].dname, @generated_week_menu[twday][i][0] %>&nbsp;
+                     <a href= "<%=edit_menu_planner_path(:id=>@generated_week_menu[twday][i][1])%>">&#9998;</a>
                   <% else %>
-                    <%= link_to 'No dish assigned', new_menu_planner_path%>
+                    <%= link_to 'Add Dish', new_menu_planner_path(:date=>twday,:dtype=>i)%>
                   <% end %>
               <% else %>
-                 <%= link_to 'No dish assigned', new_menu_planner_path%>
+                 <%= link_to 'Add Dish', new_menu_planner_path(:date=>twday)%>
               <% end %>
             </td>
           <% end %>
@@ -35,7 +38,12 @@
    <% end %>
   </tbody>
 </table>
-<br>
-
-
+<p>
+<b>Ingredients for this week</b>
+<ul style="list-style-type:none;">
+<% @week_ingredients.each do |wi| %>
+<li>&#x2610;&nbsp<%=wi%></li>
+<% end %>
+</ul>
+</p>
 <!-- <a class="btn btn-primary btn-lg" href="/menu_planners/new/newweek" role="button">Generate menu</a> -->

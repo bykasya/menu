@@ -11,12 +11,12 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="field form-inrow col-5">
     <%= form.label :dish_name %>
     <%= form.text_field :dname %>
   </div>
-
+<br>
   <div class="actions">
-    <%= form.submit %>
+  <%= form.submit "Save", class: 'btn btn-primary'%>
   </div>
 <% end %>

@@ -12,30 +12,29 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body style="background-image: url('<%=image_path("food2.png")%>');  background-size: 300px; ">
     <!-- navbar -->
     <header>
-      <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: #DCF4D2">
+      <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: #98DAE2">
         <div class="container">
 
-        <h1 class="navbar-brand order-1" style="color: #586952">Menu Planner</h1>
+        <h1 class="navbar-brand order-1"><img src="<%=image_path("menuplannerlogo.png")%>" height="30"></h1>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
             <a class="nav-item nav-link" href="/home/index"> Home <span class="sr-only">(current)</span></a>
-            <a class="nav-item nav-link" href="/menu_planners/new">Plan your day</a>
             <a class="nav-item nav-link" href="<%=menu_planners_path%>">Menu</a>
+            <a class="nav-item nav-link" href="/menu_planners/new">Plan your day</a>
             <a class="nav-item nav-link" href="<%=dishes_path%>">Dishes</a>
             <a class="nav-item nav-link" href="<%=ingredients_path%>">Ingredients</a>
           </div>
         </div>
             </nav>
-      </div>
-  </header>
+    </header>
     <!-- /navbar -->
-    <div class="container p-3 mb-4 bg-light text-dark" style="margin-top:100px; w-50;">
+    <div class="container yield" style="margin-top:100px; w-50;">
       <%= yield %>
     </div>
 

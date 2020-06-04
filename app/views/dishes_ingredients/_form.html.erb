@@ -17,11 +17,12 @@
   </div>
 
   <div class="field">
+    <h6> Choose ingredient from the list or add <%=link_to "new", new_ingredient_path%></h6>
     <%= form.label :ingredient_id %>
     <%= form.collection_select :ingredient_id, Ingredient.all, :id, :iname, include_blank: true %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Save", class: 'btn btn-primary' %>
   </div>
 <% end %>

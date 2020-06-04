@@ -1,13 +1,12 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Dishes Ingredients</h1>
-<table>
+<table class="table table-hover">
   <thead>
     <tr>
-      <th>Dish</th>
-      <th>Ingredient</th>
-      <th colspan="3"></th>
-    </tr>
+      <th scope="col">Dish</th>
+      <th scope="col">Ingredient</th>
+      </tr>
   </thead>
 
   <tbody>
@@ -17,12 +16,11 @@
         <td><%= dishes_ingredient.ingredient.iname %></td>
         <td><%= link_to 'Show', dishes_ingredient %></td>
         <td><%= link_to 'Edit', edit_dishes_ingredient_path(dishes_ingredient) %></td>
-        <td><%= link_to 'Destroy', dishes_ingredient, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Remove', dishes_ingredient, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
 
-<%= link_to 'New Dishes Ingredient', new_dishes_ingredient_path %>
+<div align="right"><a href="<%= new_dishes_ingredient_path %>" class="btn btn-primary" role="button">New Ingredient/Dish</a></div><br/>

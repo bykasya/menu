@@ -1,5 +1,6 @@
 class DishesController < ApplicationController
   before_action :set_dish, only: [:show, :edit, :update, :destroy]
+  rescue_from ActiveRecord::RecordNotFound, :with => :my_error
 
   # GET /dishes
   # GET /dishes.json
@@ -72,4 +73,9 @@ class DishesController < ApplicationController
     def dish_params
       params.require(:dish).permit(:dname)
     end
+
+    def my_error
+        redirect_to dishes_path, notice: "Dish with this ID not exist"
+    end
+
 end
