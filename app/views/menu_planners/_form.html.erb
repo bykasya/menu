@@ -25,7 +25,7 @@
 
   <div class="field">
       <% for i  in 1..3 do %>
-        <% if params.has_key?(:dtype) %>
+        <% if params.has_key?(:dtype) %> <!--for dish-type radio buttons-->
           <% if params['dtype'].to_i==i %>
             <%= radio_button("menu_planner","dish_type", i, {checked:true}) %>
               <% else %>
@@ -48,6 +48,9 @@
     <%= form.label :dish_id %>
     <%= form.collection_select :dish_id, Dish.all, :id, :dname, include_blank: true %>
   </div>
+
+  <h6> Choose ingredient from the list or add <%=link_to "New Dish", new_dish_path %></h6><br>
+
 
   <div class="actions">
     <%= form.submit "Save", class: 'btn btn-primary' %>

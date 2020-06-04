@@ -22,4 +22,5 @@
 <%= link_to 'Add More Ingredients', new_dishes_ingredient_path(@dish.id)%> |
 <%= link_to 'Edit', edit_dish_path(@dish) %> |
 <%= link_to 'Back', :back %> |
-<%= link_to 'Delete dish', @dish, method: :delete, data: { confirm: 'Are you sure?' } %>
+<%= link_to 'Delete dish', @dish, method: :delete, data: { confirm: 'Are you sure?' } %> |
+<%= link_to 'Back to Menu', menu_planners_path %>
