@@ -1,7 +1,8 @@
 <p id="notice"><%= notice %></p>
 
+<%= render "form", tag: @tag %>
+
 <h3>Your ingredients: </h3>
-<div align="right"><a href="<%= new_ingredient_path %>" class="btn btn-primary" role="button">New ingredient</a></div><br>
 <table class="table table-hover">
   <thead>
     <tr>
@@ -18,4 +19,3 @@
     </tr>
   </tbody>
 </table>
-<div align="right"><a href="<%= new_ingredient_path %>" class="btn btn-primary" role="button">New ingredient</a></div><br/>
