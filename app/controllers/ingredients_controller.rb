@@ -39,10 +39,7 @@ class IngredientsController < ApplicationController
   # DELETE /ingredients/1.json
   def destroy
     @ingredient.destroy
-    respond_to do |format|
-      format.html { redirect_to ingredients_url, notice: 'Ingredient was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+      redirect_to ingredients_path, notice: 'Ingredient was successfully destroyed.' 
   end
 
   private
