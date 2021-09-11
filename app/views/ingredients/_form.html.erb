@@ -11,12 +11,12 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :ingredient_name %>
-    <%= form.text_field :iname %>
+  <div class="field col-6" style="display: inline">
+      <%= form.text_field :iname, class: 'form-control', placeholder: "Add new ingredient here..." %>
   </div>
 
-  <div class="actions">
+  <div class="actions" style="display: inline">
     <%= form.submit "Save", class: 'btn btn-primary'%>
+
   </div>
 <% end %>
