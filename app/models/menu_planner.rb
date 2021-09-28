@@ -7,4 +7,7 @@ class MenuPlanner < ApplicationRecord
     message: "already assigned for this day"}
   validates :dish, presence: true
 
+  paginates_per 1
+
+
 end

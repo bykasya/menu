@@ -6,7 +6,7 @@ class IngredientsController < ApplicationController
   # GET /ingredients
   # GET /ingredients.json
   def index
-    @ingredients = Ingredient.all
+    @ingredients = Ingredient.all.page(params[:page])
   end
 
   # GET /ingredients/1

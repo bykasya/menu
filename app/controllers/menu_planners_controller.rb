@@ -5,7 +5,7 @@ class MenuPlannersController < ApplicationController
   # GET /menu_planners
   # GET /menu_planners.json
   def index
-    @menu_planners=MenuPlanner.all
+    @menu_planners=MenuPlanner.all.page(params[:page])
     @today = Date.current
     @this_week = @today.all_week  #returns a range (Mo...Sun) for the week of specific day
     @generated_week_menu = {}

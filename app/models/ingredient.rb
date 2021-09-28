@@ -3,4 +3,7 @@ class Ingredient < ApplicationRecord
   validates :iname, presence: true
   validates :iname, uniqueness:true
   validates :iname, uniqueness: { case_sensitive: false }
+
+  paginates_per 10
+
 end

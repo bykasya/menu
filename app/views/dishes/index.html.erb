@@ -20,3 +20,8 @@
 </table>
 
 <div align="right"><a href="<%= new_dish_path %>" class="btn btn-primary" role="button" >New dish</a></div><br/>
+
+
+<div class = "container-flex pagination mt-2">
+  <%= paginate @dishes %>
+</div>
