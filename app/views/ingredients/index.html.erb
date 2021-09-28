@@ -1,7 +1,8 @@
 <p id="notice"><%= notice %></p>
 
+<%= render "form", tag: @ingredient %>
+
 <h3>Your ingredients: </h3>
-<div align="right"><a href="<%= new_ingredient_path %>" class="btn btn-primary" role="button">New ingredient</a></div><br>
 <table class="table table-hover">
   <thead>
     <tr>
@@ -11,11 +12,15 @@
   </thead>
   <tbody>
       <% @ingredients.each do |ingredient| %>
-    <tr>
-      <td><%= link_to ingredient.iname, ingredient %></td>
-      <td><%= link_to 'Edit', edit_ingredient_path(ingredient) %></td>
-      <% end %>
-    </tr>
+        <tr>
+          <td><%= ingredient.iname %></td>
+          <td><%= link_to 'Edit', edit_ingredient_path(ingredient) %></td>
+          <td><%= link_to 'Delete', ingredient, method: :delete, data: { confirm: 'Are you sure?'} %>
+
+            </td>
+        </tr>
+     <% end %>
+
   </tbody>
 </table>
 <div align="right"><a href="<%= new_ingredient_path %>" class="btn btn-primary" role="button">New ingredient</a></div><br/>
