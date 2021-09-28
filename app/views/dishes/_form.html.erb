@@ -15,6 +15,13 @@
     <%= form.label :dish_name %>
     <%= form.text_field :dname %>
   </div>
+
+  <div class="field form-inrow col-5">
+    <%= form.label(:ingredients, 'Select one or multiple ingredients (holding Ctrl/Command):') %>
+    <%= collection_select(:dish, :ingredient_ids, Ingredient.all, :id, :iname, {}, {:class => 'form-control', :multiple => 'true'}) %>
+  </div>
+
+
 <br>
   <div class="actions">
   <%= form.submit "Save", class: 'btn btn-primary'%>
