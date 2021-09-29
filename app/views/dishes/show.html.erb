@@ -9,9 +9,9 @@
 <p>
   <table>
       <tbody>
-        <% @dishes_ingredients.includes(:ingredient).each do |di|%>
+        <% @dish.ingredients.each do |di|%>
           <tr>
-            <td><%= di.ingredient.iname%></td>
+            <td><%= di.iname%></td>
             <td><%= link_to 'Delete', di, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 
           </tr>
@@ -19,7 +19,6 @@
     </tbody>
   </table>
 </p>
-<%= link_to 'Add More Ingredients', new_dishes_ingredient_path(@dish.id)%> |
 <%= link_to 'Edit', edit_dish_path(@dish) %> |
 <%= link_to 'Back', :back %> |
 <%= link_to 'Delete dish', @dish, method: :delete, data: { confirm: 'Are you sure?' } %> |

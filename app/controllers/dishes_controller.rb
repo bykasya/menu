@@ -11,7 +11,6 @@ class DishesController < ApplicationController
   # GET /dishes/1
   # GET /dishes/1.json
   def show
-    @dishes_ingredients = DishesIngredient.where(dish_id:params[:id])
   end
 
   # GET /dishes/new
@@ -71,7 +70,7 @@ class DishesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def dish_params
-      params.require(:dish).permit(:dname)
+      params.require(:dish).permit(:dname, ingredient_ids: [])
     end
 
     def my_error
