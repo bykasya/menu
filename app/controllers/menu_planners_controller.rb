@@ -5,30 +5,27 @@ class MenuPlannersController < ApplicationController
   # GET /menu_planners
   # GET /menu_planners.json
   def index
-    @menu_planners=MenuPlanner.all.page(params[:page])
-    today = Date.current
-    @this_week = today.all_week  #returns a range (Mo...Sun) for the week of specific day
+    @menu_planners=MenuPlanner.all
+
+    @this_week = Date.current.all_week  #returns a range (Mo...Sun) for the week of specific day
     @generated_week_menu = {}
     # for list of ingredients
     @week_ingredients = []
+    #generated week to be added to array
     @menu_planners.each do |mp|
       if @this_week.include?(mp.date)
         @generated_week_menu=@generated_week_menu.deep_merge({mp.date=>{mp.dish_type=>[mp.dish,mp.id]}}) #to assign dish_type/dish to the date
 
-        @week_ingredients << mp.dish.ingredients.collect(&:iname)#to extract ingredients from week dishes
+        @week_ingredients << mp.dish.ingredients.collect(&:iname)#to collect ingredients from week dishes
         @week_ingredients.flatten!.uniq!
       end
-      puts !!! @generated_week_menu.inspect
-    end
-
-    # @week_ingredients.uniq!
+    end    
   end
 
   # GET /menu_planners/1
   # GET /menu_planners/1.json
   def show
   end
-
   # GET /menu_planners/new
   def new
     @menu_planner = MenuPlanner.new
